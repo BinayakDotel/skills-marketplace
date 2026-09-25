@@ -1,0 +1,70 @@
+{
+  "title": "DOCKER OVERVIEW",
+  "title_highlight": "DOCKER",
+  "subtitle": "Build once, run anywhere",
+  "variant": "notebook",
+  "accent": "navy",
+  "page": "Page 01",
+  "brand": { "name": "Binayak's Notes", "tagline": "Code · Learn · Build · Ship" },
+  "stickies": [
+    { "text": "Build, package, run anywhere!", "color": "yellow", "pos": "tl", "tilt": -4 },
+    { "text": "Same app, same behaviour everywhere", "color": "green", "pos": "tr", "tilt": 3 }
+  ],
+  "footer": { "left": "Practice today, build tomorrow", "right": "Small commands, big possibilities" },
+  "rows": [
+    { "cols": [
+      [
+        { "type": "bullets", "n": 1, "title": "What is Docker?", "icon": "🐳", "color": "blue", "items": [
+          "A platform to **build, package and run** applications inside ==containers==.",
+          "Gives the same environment on your laptop, CI and the server.",
+          "Lightweight compared with virtual machines: containers share the host kernel."
+        ] },
+        { "type": "kv", "n": 3, "title": "Core concepts", "icon": "🧱", "color": "purple", "items": [
+          { "k": "Image", "v": "read-only blueprint used to create containers", "color": "blue" },
+          { "k": "Container", "v": "a running instance of an image", "color": "green" },
+          { "k": "Dockerfile", "v": "the instructions to build an image", "color": "red" },
+          { "k": "Volume", "v": "persistent storage that outlives the container", "color": "orange" },
+          { "k": "Registry", "v": "where images are pushed and pulled (Docker Hub)", "color": "purple" }
+        ] }
+      ],
+      [
+        { "type": "checks", "n": 2, "title": "Why Docker?", "icon": "✅", "color": "green", "items": [
+          "Consistent **environment** everywhere", "Easy **deployment**", "Lightweight (vs VMs)", "Faster startup", "Isolation and security"
+        ] },
+        { "type": "flow", "n": 4, "title": "Basic flow", "icon": "🔁", "color": "pink", "steps": [
+          { "label": "Write Dockerfile", "color": "purple" }, { "label": "Build image", "color": "green" }, { "label": "Run container", "color": "red" }
+        ] }
+      ]
+    ] },
+    { "cols": [
+      [
+        { "type": "chips", "n": 5, "title": "Common commands", "icon": "⌨️", "subtitle": "The six you will type every day", "color": "blue", "items": [
+          { "chip": "docker build -t myapp .", "desc": "Build an image from the Dockerfile in this folder." },
+          { "chip": "docker run -d -p 8000:8000 myapp", "desc": "Run a container in the background and map a port." },
+          { "chip": "docker ps / ps -a", "desc": "List running / all containers." },
+          { "chip": "docker logs -f <id>", "desc": "Follow a container's output." },
+          { "chip": "docker stop <id>", "desc": "Stop a running container." },
+          { "chip": "docker rm <id>", "desc": "Remove a stopped container." }
+        ] }
+      ],
+      [
+        { "type": "code", "n": 6, "title": "Example: FastAPI Dockerfile", "icon": "📄", "lang": "bash", "color": "orange", "code": "FROM python:3.12-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install -r requirements.txt\nCOPY . .\nEXPOSE 8000\nCMD [\"uvicorn\", \"main:app\", \"--host\", \"0.0.0.0\"]", "caption": "Order matters: copy requirements first so the pip layer is cached." },
+        { "type": "callout", "kind": "tip", "title": "Quick tips", "text": ["One container = one service.", "Keep images small: slim base, `.dockerignore`.", "Never bake secrets into an image."] }
+      ]
+    ] },
+    { "cols": [ [
+      { "type": "table", "n": 7, "title": "Image vs container vs volume", "icon": "📊", "color": "green", "head": ["Thing", "Lives where", "Changes?", "Use it for"], "rows": [
+        ["Image", "registry / local cache", "No (rebuild)", "shipping the app"],
+        ["Container", "docker host", "Yes, but lost on `rm`", "running the app"],
+        ["Volume", "docker host, outside the container", "Yes, persists", "databases, uploads"]
+      ] }
+    ] ] },
+    { "cols": [ [
+      { "type": "revision", "title": "Quick revision points", "icon": "⭐", "color": "yellow", "groups": [
+        ["Dockerfile → image → container.", "Images are read-only; containers are running instances."],
+        ["Volumes persist data; containers do not.", "`build`, `run`, `ps`, `logs`, `stop`, `rm`."],
+        ["One service per container.", "Copy dependencies before code for cache hits."]
+      ] }
+    ] ] }
+  ]
+}

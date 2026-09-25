@@ -1,0 +1,28 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Skills follow the Agent Skills spec and are listed in marketplace.json
+        run: python3 scripts/validate.py
+
+      - name: marketplace.json is valid JSON
+        run: python3 -m json.tool .claude-plugin/marketplace.json > /dev/null
+
+      - name: Example specs fit their pages (estimate only, no browser needed)
+        run: |
+          for spec in skills/visual-notes/examples/*.json; do
+            echo "== $spec"
+            python3 skills/visual-notes/scripts/render_note.py "$spec" "$RUNNER_TEMP/out.html" --estimate
+          done

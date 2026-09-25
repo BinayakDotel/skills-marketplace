@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "binayak-skills",
+  "description": "Agent Skills by Binayak Dotel: portable SKILL.md folders for Claude and other agents.",
+  "owner": {
+    "name": "Binayak Dotel",
+    "url": "https://github.com/BinayakDotel"
+  },
+  "plugins": [
+    {
+      "name": "visual-notes",
+      "displayName": "Visual Notes",
+      "source": "./skills/visual-notes",
+      "description": "Turn any topic, document or rough notes into a hand-drawn-style one-page study sheet (sketchnote / cheat sheet / revision notes) as a printable A4 PDF.",
+      "version": "1.0.0",
+      "author": { "name": "Binayak Dotel", "url": "https://github.com/BinayakDotel" },
+      "license": "MIT",
+      "homepage": "https://github.com/BinayakDotel/skills-marketplace/tree/main/skills/visual-notes",
+      "repository": "https://github.com/BinayakDotel/skills-marketplace",
+      "keywords": ["notes", "cheat-sheet", "revision", "sketchnote", "pdf", "study"],
+      "category": "productivity"
+    }
+  ]
+}
