@@ -1,0 +1,189 @@
+{
+ "title": "SET UP VISUAL-NOTES",
+ "subtitle": "A user's recipe: install once, then just ask for notes",
+ "variant": "whiteboard",
+ "accent": "teal",
+ "rows": [
+  {
+   "cols": [
+    [
+     {
+      "type": "table",
+      "n": 1,
+      "title": "Pick your path",
+      "color": "purple",
+      "head": [
+       "You use",
+       "Install with",
+       "Time"
+      ],
+      "rows": [
+       [
+        "**Claude Code**",
+        "plugin marketplace (2 commands)",
+        "1 min"
+       ],
+       [
+        "Codex, Cursor, Copilot, other agents",
+        "`npx skills add …` (skills CLI)",
+        "1 min"
+       ],
+       [
+        "**claude.ai** / Claude desktop",
+        "upload `visual-notes.zip` in Settings",
+        "3 min"
+       ],
+       [
+        "anything that reads `SKILL.md`",
+        "copy the folder by hand",
+        "2 min"
+       ]
+      ],
+      "note": "Everything lives in `github.com/BinayakDotel/skills-marketplace`; pick ==one== path."
+     }
+    ]
+   ]
+  },
+  {
+   "cols": [
+    [
+     {
+      "type": "checks",
+      "n": 2,
+      "title": "Before you start",
+      "color": "green",
+      "items": [
+       "**Python 3** on the machine that runs the skill",
+       "**Chrome/Edge** (Mac, Windows) or **wkhtmltopdf** (Linux) for the PDF",
+       "claude.ai: ==Code execution== turned on",
+       "No PDF engine? You get a printable HTML page instead"
+      ]
+     }
+    ],
+    [
+     {
+      "type": "callout",
+      "kind": "analogy",
+      "title": "Analogy: a new recipe card",
+      "text": "Installing adds a card to the agent's binder. It reads only the **label** (description) until you ask for notes, then opens the card and follows it."
+     }
+    ]
+   ]
+  },
+  {
+   "cols": [
+    [
+     {
+      "type": "code",
+      "n": 3,
+      "title": "Install from the terminal",
+      "color": "blue",
+      "lang": "bash",
+      "code": "# Claude Code: add the marketplace once, then install the plugin\n/plugin marketplace add BinayakDotel/skills-marketplace\n/plugin install visual-notes@binayak-skills\n\n# Any agent (Claude Code, Codex, Cursor, Copilot…): the skills CLI\nnpx skills add BinayakDotel/skills-marketplace --list\nnpx skills add BinayakDotel/skills-marketplace --skill visual-notes -a claude-code -g",
+      "caption": "`-g` = install for every project; drop it to install into the current project only."
+     }
+    ]
+   ]
+  },
+  {
+   "cols": [
+    [
+     {
+      "type": "numbered",
+      "n": 4,
+      "title": "claude.ai / Claude desktop",
+      "color": "orange",
+      "items": [
+       "Get `visual-notes.zip` (repo: `./scripts/sync-skill.sh visual-notes`)",
+       "Settings -> Capabilities -> turn on **Code execution**",
+       "Skills -> **Upload skill** -> pick the zip",
+       "Switch the skill on; Claude Code sessions sync it too"
+      ]
+     }
+    ],
+    [
+     {
+      "type": "numbered",
+      "n": 5,
+      "title": "By hand (any agent)",
+      "color": "pink",
+      "items": [
+       "`git clone` the skills-marketplace repo",
+       "Copy `skills/visual-notes/` into your agent's skills folder",
+       "Claude Code: `~/.claude/skills/visual-notes/`",
+       "Start a new session so the agent sees it"
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "cols": [
+    [
+     {
+      "type": "chips",
+      "n": 6,
+      "title": "First run: just ask",
+      "color": "teal",
+      "items": [
+       {
+        "chip": "make revision notes on Docker",
+        "desc": "one-page PDF"
+       },
+       {
+        "chip": "cheat sheet from this PDF",
+        "desc": "reads only the pages it needs"
+       },
+       {
+        "chip": "/visual-notes Python lists",
+        "desc": "call it by name"
+       }
+      ],
+      "note": "You get `<topic>-notes/<name>.pdf` + `<name>.spec.json`."
+     }
+    ],
+    [
+     {
+      "type": "callout",
+      "kind": "warning",
+      "title": "If it goes wrong",
+      "text": [
+       "**no closing ---** on upload -> wrong zip; use the one the script built.",
+       "**HTML, not PDF** -> install Chrome or wkhtmltopdf.",
+       "**Not triggering** -> check it is enabled, or call `/visual-notes`.",
+       "**Old behaviour on claude.ai** -> remove the old skill, upload the new zip."
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "cols": [
+    [
+     {
+      "type": "revision",
+      "title": "Quick revision points",
+      "groups": [
+       [
+        "Claude Code: ==/plugin install==.",
+        "Other agents: `npx skills add`."
+       ],
+       [
+        "claude.ai: upload the ==zip==, code execution on.",
+        "Needs Python 3 + Chrome for the PDF."
+       ],
+       [
+        "Then just ask: \"notes on X\".",
+        "Output: a PDF + its spec (HTML if no PDF engine)."
+       ]
+      ]
+     }
+    ]
+   ]
+  }
+ ],
+ "footer": {
+  "left": "visual-notes 1.0.1",
+  "right": "github.com/BinayakDotel/skills-marketplace"
+ }
+}
