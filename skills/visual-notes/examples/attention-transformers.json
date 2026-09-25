@@ -1,0 +1,416 @@
+{
+  "title": "TRANSFORMERS & ATTENTION",
+  "variant": "whiteboard",
+  "accent": "purple",
+  "footer": {
+    "left": "Day 1 of the Research Ascent",
+    "right": "Re-read after Week 6: Let's build GPT"
+  },
+  "pages": [
+    {
+      "subtitle": "Day-1 revision notes: what a GPT does to your tokens",
+      "page": "Page 01",
+      "stickies": [
+        {
+          "text": "Confused on day 1 is normal",
+          "color": "yellow",
+          "pos": "tl",
+          "tilt": -4
+        },
+        {
+          "text": "Week 6 makes this click",
+          "color": "green",
+          "pos": "tr",
+          "tilt": 3
+        }
+      ],
+      "rows": [
+        {
+          "cols": [
+            [
+              {
+                "type": "flow",
+                "n": 1,
+                "title": "The pipeline",
+                "color": "blue",
+                "steps": [
+                  {
+                    "label": "Text",
+                    "color": "pink"
+                  },
+                  {
+                    "label": "Tokens",
+                    "sub": "BPE ids",
+                    "color": "orange"
+                  },
+                  {
+                    "label": "Embeddings",
+                    "sub": "one vector per token",
+                    "color": "green"
+                  },
+                  {
+                    "label": "N × block",
+                    "sub": "attention + MLP",
+                    "color": "purple"
+                  },
+                  {
+                    "label": "Logits",
+                    "sub": "a score per vocab entry",
+                    "color": "blue"
+                  },
+                  {
+                    "label": "Next token",
+                    "sub": "sample, append, repeat",
+                    "color": "teal"
+                  }
+                ],
+                "caption": "Generation is this loop run once per token. Everything the model \"knows\" is inside the N blocks."
+              }
+            ]
+          ]
+        },
+        {
+          "cols": [
+            [
+              {
+                "type": "bullets",
+                "n": 2,
+                "title": "What is a transformer?",
+                "color": "purple",
+                "items": [
+                  "A neural network that reads a **whole sequence of tokens at once** and learns which tokens matter to which.",
+                  "The architecture behind GPT, Claude, Gemini, Llama. ==Decoder-only== models predict the **next token**, again and again.",
+                  "One block, repeated: **attention** (tokens talk to each other) + **MLP** (each token thinks on its own)."
+                ]
+              },
+              {
+                "type": "callout",
+                "kind": "analogy",
+                "title": "Real-life analogy: a library search",
+                "text": [
+                  "**Query** = what this token is looking for.",
+                  "**Key** = the label on every other token.",
+                  "**Value** = what that token actually contains.",
+                  "Best-matching labels pour in the most content."
+                ]
+              }
+            ],
+            [
+              {
+                "type": "kv",
+                "n": 3,
+                "title": "Key terms",
+                "color": "teal",
+                "items": [
+                  {
+                    "k": "Token",
+                    "v": "unit of text (≈ a word piece) mapped to an integer id"
+                  },
+                  {
+                    "k": "Embedding",
+                    "v": "the vector a token becomes (GPT-2 small: 768 numbers)"
+                  },
+                  {
+                    "k": "Context window",
+                    "v": "the most tokens the model can look at in one pass"
+                  },
+                  {
+                    "k": "Logits",
+                    "v": "raw scores over the vocabulary, before softmax"
+                  },
+                  {
+                    "k": "Softmax",
+                    "v": "turns scores into probabilities that sum to 1"
+                  }
+                ]
+              },
+              {
+                "type": "callout",
+                "kind": "think",
+                "text": "Attention is a **learned, soft lookup** that every token performs over the whole context. Nothing is fetched exactly; everything is mixed by weight."
+              }
+            ]
+          ]
+        },
+        {
+          "cols": [
+            [
+              {
+                "type": "numbered",
+                "n": 4,
+                "title": "Attention, step by step",
+                "color": "blue",
+                "items": [
+                  "Each token vector `x` makes three new vectors: **Q** = x·W_Q, **K** = x·W_K, **V** = x·W_V (the W matrices are learned).",
+                  "Score every pair: `score[i][j] = Q_i · K_j` → how much token i wants token j.",
+                  "Scale by ==√d_k== (stops scores exploding), then **softmax** each row → weights that sum to 1.",
+                  "Output for token i = the **weighted sum of all V_j**. High-weight tokens pour in more of their content.",
+                  "Add it back onto `x` (the **residual**). The token now carries context."
+                ]
+              },
+              {
+                "type": "callout",
+                "kind": "formula",
+                "title": "Formula box",
+                "text": "Attention(Q, K, V) = softmax( Q·Kᵀ / √d_k ) · V\n\nShapes for T tokens, dim d: Q, K, V are (T × d); Q·Kᵀ is (T × T); the output is (T × d) again."
+              }
+            ],
+            [
+              {
+                "type": "table",
+                "n": 5,
+                "title": "Worked micro-example",
+                "subtitle": "\"The cat sat because **it** was tired\" — attention weights for the token **it** (illustrative numbers)",
+                "color": "green",
+                "head": [
+                  "Other token",
+                  "Weight",
+                  "Why"
+                ],
+                "rows": [
+                  [
+                    "cat",
+                    "**0.70**",
+                    "the pronoun refers to it"
+                  ],
+                  [
+                    "tired",
+                    "0.15",
+                    "a state of the same thing"
+                  ],
+                  [
+                    "sat",
+                    "0.08",
+                    "same subject, less useful"
+                  ],
+                  [
+                    "The / because",
+                    "0.07",
+                    "mostly filler"
+                  ]
+                ],
+                "note": "Result: the vector for **it** becomes mostly **cat**-flavoured. Every token does this, in every layer, in parallel."
+              },
+              {
+                "type": "callout",
+                "kind": "key",
+                "title": "Why an AI engineer cares",
+                "text": [
+                  "Cost is **O(T²)** in tokens → long prompts are expensive; that is why ==context engineering== exists.",
+                  "K and V of the prompt are reused while generating (the **KV cache**) → that is what **prompt caching** sells you.",
+                  "Context window = the largest T the model was trained to handle well."
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "cols": [
+            [
+              {
+                "type": "compare",
+                "n": 6,
+                "title": "Common confusions",
+                "color": "pink",
+                "left": {
+                  "title": "It is NOT",
+                  "color": "red",
+                  "items": [
+                    "A database lookup with exact keys",
+                    "Reading left to right one word at a time (that is an RNN)",
+                    "Aware of word order by itself",
+                    "\"Understanding\" in the human sense"
+                  ]
+                },
+                "right": {
+                  "title": "It IS",
+                  "color": "green",
+                  "items": [
+                    "Soft matching: every token gets some weight",
+                    "All tokens processed in parallel in each layer",
+                    "Order added explicitly through positions",
+                    "Next-token statistics learned from enormous text"
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subtitle": "Heads, blocks, code and interview prep",
+      "page": "Page 02",
+      "rows": [
+        {
+          "cols": [
+            [
+              {
+                "type": "bullets",
+                "n": 7,
+                "title": "Heads, masks, positions",
+                "color": "orange",
+                "items": [
+                  "**Multi-head**: several attention lookups run in parallel, each with its own W_Q/W_K/W_V (one head may track syntax, another coreference). Concatenate, project back.",
+                  "**Causal mask**: in GPT a token may only look **left**. Future positions get −∞ before softmax → weight 0.",
+                  "**Position**: attention is order-blind, so position is injected explicitly (learned positional embeddings in GPT-2, ==RoPE== in Llama and Qwen)."
+                ]
+              },
+              {
+                "type": "stack",
+                "n": 8,
+                "title": "One transformer block",
+                "color": "purple",
+                "label": "repeat N times (GPT-2 small: N = 12, 12 heads, d = 768)",
+                "layers": [
+                  {
+                    "label": "input x (T × d)",
+                    "color": "gray"
+                  },
+                  {
+                    "label": "LayerNorm → multi-head attention → + x",
+                    "color": "blue"
+                  },
+                  {
+                    "label": "LayerNorm → MLP (expand 4×, GELU, project back) → + x",
+                    "color": "green"
+                  },
+                  {
+                    "label": "output (T × d) → next block",
+                    "color": "gray"
+                  }
+                ],
+                "caption": "The \"+ x\" residual paths are why deep stacks train at all."
+              }
+            ],
+            [
+              {
+                "type": "code",
+                "n": 9,
+                "title": "Causal attention in 10 lines",
+                "lang": "python",
+                "color": "blue",
+                "code": "import torch, math\nT, d = 5, 16                 # tokens, dim\nx = torch.randn(T, d)        # token vectors\nWq, Wk, Wv = [torch.randn(d, d) for _ in \"qkv\"]\nQ, K, V = x @ Wq, x @ Wk, x @ Wv\ns = Q @ K.T / math.sqrt(d)   # (T, T) scores\nmask = torch.tril(torch.ones(T, T)).bool()\ns = s.masked_fill(~mask, float(\"-inf\"))\nw = torch.softmax(s, dim=-1) # rows sum to 1\nout = w @ V                  # mix of values",
+                "caption": "This is the whole idea. Everything else is stacking, normalising and scaling it up."
+              },
+              {
+                "type": "callout",
+                "kind": "memory",
+                "title": "Memory trick",
+                "text": "**Q asks, K labels, V carries.**\nSoftmax shares out 100% of attention; the mask hides the future; positions tell the order."
+              }
+            ]
+          ]
+        },
+        {
+          "cols": [
+            [
+              {
+                "type": "questions",
+                "n": 10,
+                "title": "Interview questions",
+                "color": "purple",
+                "groups": [
+                  {
+                    "title": "Basics",
+                    "color": "blue",
+                    "items": [
+                      "What problem does attention solve?",
+                      "Why three matrices Q, K, V?",
+                      "Why divide by √d_k?",
+                      "Why softmax rather than raw scores?"
+                    ]
+                  },
+                  {
+                    "title": "Depth",
+                    "color": "pink",
+                    "items": [
+                      "What do multiple heads buy you?",
+                      "What does the causal mask do?",
+                      "Why add positional information?",
+                      "Why is attention quadratic in T?"
+                    ]
+                  },
+                  {
+                    "title": "Applied",
+                    "color": "green",
+                    "items": [
+                      "What does prompt caching actually cache?",
+                      "Why do long contexts cost more and get slower?",
+                      "When would you pick RAG over a huge context window?",
+                      "What is a KV cache and why does it matter for serving?"
+                    ]
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "cols": [
+            [
+              {
+                "type": "table",
+                "n": 11,
+                "title": "Where this gets built in your roadmap",
+                "color": "blue",
+                "head": [
+                  "When",
+                  "What you do",
+                  "What finally clicks"
+                ],
+                "rows": [
+                  [
+                    "Week 1, day 1",
+                    "3Blue1Brown videos, Illustrated Transformer",
+                    "the shape of the idea"
+                  ],
+                  [
+                    "Week 5",
+                    "micrograd and makemore by hand",
+                    "backprop, embeddings, loss"
+                  ],
+                  [
+                    "Week 6",
+                    "Karpathy: Let's build GPT, code along",
+                    "Q, K, V, masking, heads — because you type them"
+                  ],
+                  [
+                    "Week 8",
+                    "Reproduce GPT-2 (124M)",
+                    "scale, speed, the full training story"
+                  ]
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "cols": [
+            [
+              {
+                "type": "revision",
+                "title": "Quick revision points (last-minute)",
+                "color": "pink",
+                "groups": [
+                  [
+                    "Tokens → vectors → N blocks → next-token probabilities.",
+                    "Attention = softmax(QKᵀ/√d)·V, per token, over the whole context."
+                  ],
+                  [
+                    "Q asks, K labels, V carries content.",
+                    "Multi-head = parallel lookups; causal mask = look left only."
+                  ],
+                  [
+                    "Order comes from positional info, not from attention.",
+                    "Cost grows with T²; the KV cache makes generation cheap."
+                  ]
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
