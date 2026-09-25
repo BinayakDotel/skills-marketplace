@@ -6,7 +6,7 @@ Reusable skills for AI agents. Each skill is a folder with a `SKILL.md` that fol
 
 | Skill | What it does | Version |
 |---|---|---|
-| [visual-notes](skills/visual-notes/) | Turns a topic, document or rough notes into a hand-drawn-style one-page study sheet (cheat sheet / revision notes) as a printable A4 PDF. | 1.0.0 |
+| [visual-notes](skills/visual-notes/) | Turns a topic, document or rough notes into a hand-drawn-style one-page study sheet (cheat sheet / revision notes) as a printable A4 PDF. | 1.0.1 |
 
 ## Install
 

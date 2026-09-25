@@ -12,7 +12,7 @@
       "displayName": "Visual Notes",
       "source": "./skills/visual-notes",
       "description": "Turn any topic, document or rough notes into a hand-drawn-style one-page study sheet (sketchnote / cheat sheet / revision notes) as a printable A4 PDF.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": { "name": "Binayak Dotel", "url": "https://github.com/BinayakDotel" },
       "license": "MIT",
       "homepage": "https://github.com/BinayakDotel/skills-marketplace/tree/main/skills/visual-notes",
