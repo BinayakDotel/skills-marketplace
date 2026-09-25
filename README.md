@@ -2,6 +2,23 @@
 
 Reusable skills for AI agents. Each skill is a folder with a `SKILL.md` that follows the open [Agent Skills](https://agentskills.io/specification) format, so it works in Claude (Code, desktop, claude.ai) and in other agents that read the same format, such as Codex, Cursor and GitHub Copilot.
 
+## See it
+
+<a href="docs/showcase/visual-notes-setup/visual-notes-setup.pdf"><img src="docs/showcase/visual-notes-setup/visual-notes-setup.png" width="420" align="right" alt="A one-page A4 setup guide for visual-notes, rendered by the skill"></a>
+
+This setup guide was made by `visual-notes` itself. The agent wrote the content as a [JSON spec](docs/showcase/visual-notes-setup/visual-notes-setup.spec.json), and the skill's renderer turned it into [this A4 PDF](docs/showcase/visual-notes-setup/visual-notes-setup.pdf). The agent never writes HTML, so every page has the same look.
+
+The same spec gives the same page every time. To check, render it yourself:
+
+```bash
+python3 skills/visual-notes/scripts/render_note.py \
+  docs/showcase/visual-notes-setup/visual-notes-setup.spec.json /tmp/setup.html --pdf-only
+```
+
+`docs/` is not part of any skill, so installs stay small.
+
+<br clear="right">
+
 ## Skills
 
 | Skill | What it does | Version |
