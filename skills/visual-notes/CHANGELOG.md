@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (2026-09-25)
+
+- Renderer no longer leaves `<name>.print.measure.html` next to the PDF when Chrome's page measurement times out.
+
 ## 1.0.0 (2026-09-25)
 
 First release in this repo.

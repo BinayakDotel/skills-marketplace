@@ -575,18 +575,20 @@ def ensure_local_fonts():
 
 def chrome_measure(chrome, html_path, timeout=60):
     """Exact .page heights via headless Chrome --dump-dom (fresh profile, so it cannot hang on a running Chrome)."""
+    tmp = html_path.with_name(html_path.stem + ".measure.html")
     try:
         src = html_path.read_text(encoding="utf-8")
         inject = '<script>document.body.setAttribute("data-h",[...document.querySelectorAll(".page")].map(p=>p.offsetHeight).join(","))</script></body>'
-        tmp = html_path.with_name(html_path.stem + ".measure.html"); tmp.write_text(src.replace("</body>", inject, 1), encoding="utf-8")
+        tmp.write_text(src.replace("</body>", inject, 1), encoding="utf-8")
         r = subprocess.run([chrome, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--window-size=900,1200", "--virtual-time-budget=5000",
                             "--user-data-dir=" + tempfile.mkdtemp(), "--dump-dom", tmp.resolve().as_uri()],
                            capture_output=True, text=True, timeout=timeout)
-        tmp.unlink(missing_ok=True)
         m = re.search(r'data-h="([^"]*)"', r.stdout)
         return [int(x) for x in m.group(1).split(",")] if m and m.group(1) else None
     except Exception:
-        return None
+        return None   # e.g. timeout: the caller falls back to the estimate
+    finally:
+        tmp.unlink(missing_ok=True)   # never leave the temp file next to the deliverables
 
 def chrome_print(chrome, html_path, pdf, timeout=120):
     """Print with headless Chrome. It sometimes writes the PDF and never exits, so wait for the file to settle, then stop it."""
