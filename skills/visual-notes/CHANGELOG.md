@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2 (2026-09-26)
+
+- Description no longer names another creator; the style credit moved to the repo README.
+
 ## 1.0.1 (2026-09-25)
 
 - Renderer no longer leaves `<name>.print.measure.html` next to the PDF when Chrome's page measurement times out.

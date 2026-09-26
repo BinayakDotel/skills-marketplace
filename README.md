@@ -23,7 +23,7 @@ python3 skills/visual-notes/scripts/render_note.py \
 
 | Skill | What it does | Version |
 |---|---|---|
-| [visual-notes](skills/visual-notes/) | Turns a topic, document or rough notes into a hand-drawn-style one-page study sheet (cheat sheet / revision notes) as a printable A4 PDF. | 1.0.1 |
+| [visual-notes](skills/visual-notes/) | Turns a topic, document or rough notes into a hand-drawn-style one-page study sheet (cheat sheet / revision notes) as a printable A4 PDF. | 1.0.2 |
 
 ## Install
 
@@ -73,6 +73,10 @@ To add a skill:
 4. Run `python3 scripts/validate.py`.
 
 When you change a skill, bump its `version` in `marketplace.json` so Claude Code users get the update.
+
+## Credits
+
+The look of `visual-notes` is inspired by the hand-drawn revision notes of the Developer Blz notebook series and similar Python revision-notes pages. No branding from them is used.
 
 ## License
 
