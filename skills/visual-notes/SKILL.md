@@ -1,6 +1,6 @@
 ---
 name: visual-notes
-description: 'Turn any topic, document, lecture or rough notes into a hand-drawn-style one-page study sheet (sketchnote / cheat sheet / revision notes) delivered as a printable A4 PDF: numbered pastel sections, tables, highlighted code, callouts, analogies, memory tricks and a "quick revision points" strip, in the style of the Developer Blz / Python revision-notes pages. Use whenever the user asks for notes, revision notes, a cheat sheet, a study sheet, a one-pager, a summary sheet, a visual explainer, "notes like the ones I shared", or says "make notes on X" / "summarize X for revision", including from uploaded PDFs or docs.'
+description: 'Turn any topic, document, lecture or rough notes into a hand-drawn-style one-page study sheet (sketchnote / cheat sheet / revision notes) delivered as a printable A4 PDF: numbered pastel sections, tables, highlighted code, callouts, analogies, memory tricks and a "quick revision points" strip, in the style of popular hand-drawn revision-notes pages. Use whenever the user asks for notes, revision notes, a cheat sheet, a study sheet, a one-pager, a summary sheet, a visual explainer, "notes like the ones I shared", or says "make notes on X" / "summarize X for revision", including from uploaded PDFs or docs.'
 license: MIT
 compatibility: Python 3; headless Chrome/Edge or wkhtmltopdf for the PDF (falls back to HTML without them)
 ---
