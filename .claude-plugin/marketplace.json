@@ -19,6 +19,19 @@
       "repository": "https://github.com/BinayakDotel/skills-marketplace",
       "keywords": ["notes", "cheat-sheet", "revision", "sketchnote", "pdf", "study"],
       "category": "productivity"
+    },
+    {
+      "name": "conventional-commits",
+      "displayName": "Conventional Commits",
+      "source": "./skills/conventional-commits",
+      "description": "Write clear Conventional Commits style commit messages (typed subject, body, breaking-change and issue footers) from a diff, staged changes or a short description of the work.",
+      "version": "1.0.0",
+      "author": { "name": "Binayak Dotel", "url": "https://github.com/BinayakDotel" },
+      "license": "MIT",
+      "homepage": "https://github.com/BinayakDotel/skills-marketplace/tree/main/skills/conventional-commits",
+      "repository": "https://github.com/BinayakDotel/skills-marketplace",
+      "keywords": ["git", "commit", "conventional-commits", "message", "developer-experience"],
+      "category": "productivity"
     }
   ]
 }

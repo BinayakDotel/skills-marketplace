@@ -24,6 +24,7 @@ python3 skills/visual-notes/scripts/render_note.py \
 | Skill | What it does | Version |
 |---|---|---|
 | [visual-notes](skills/visual-notes/) | Turns a topic, document or rough notes into a hand-drawn-style one-page study sheet (cheat sheet / revision notes) as a printable A4 PDF. | 1.0.2 |
+| [conventional-commits](skills/conventional-commits/) | Writes clear Conventional Commits messages (typed subject, body, breaking-change and issue footers) from a diff, staged changes or a short description of the work. | 1.0.0 |
 
 ## Install
 
