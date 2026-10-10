@@ -25,6 +25,7 @@ python3 skills/visual-notes/scripts/render_note.py \
 |---|---|---|
 | [visual-notes](skills/visual-notes/) | Turns a topic, document or rough notes into a hand-drawn-style one-page study sheet (cheat sheet / revision notes) as a printable A4 PDF. | 1.0.2 |
 | [conventional-commits](skills/conventional-commits/) | Writes clear Conventional Commits messages (typed subject, body, breaking-change and issue footers) from a diff, staged changes or a short description of the work. | 1.0.0 |
+| [research](skills/research/) | Researches a topic on the web and returns a sourced fact brief: each claim with a link and an exact quote, legend kept apart from history, disputes and myths flagged, plus a JSON block apps can import. | 1.0.0 |
 
 ## Install
 
@@ -46,6 +47,8 @@ npx skills add BinayakDotel/skills-marketplace --skill visual-notes -a claude-co
 **claude.ai / Claude desktop**: build `dist/visual-notes.zip` with `./scripts/sync-skill.sh visual-notes`, then Settings → Capabilities → Skills → Upload skill. Code execution must be on.
 
 **By hand**: copy `skills/<name>/` into your agent's skills folder (for Claude Code, `~/.claude/skills/<name>/`).
+
+**Chat apps without skill support** (ChatGPT, Grok and others): paste the skill's `SKILL.md` as project instructions or as the first message, then send your request. Pure-instruction skills such as `research` and `conventional-commits` work this way; `research` also needs the app's web search turned on.
 
 Some skills run bundled scripts, so the agent needs a shell. `visual-notes` needs Python 3, plus headless Chrome/Edge or wkhtmltopdf for the PDF. Without them it delivers the HTML page instead.
 

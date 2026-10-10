@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BinayakDotel/skills-marketplace/skills/research/references/brief.schema.json",
+  "title": "research-brief/1",
+  "description": "A sourced fact brief produced by the research skill. Cross-reference rules (ids used in outline, versions and disputed must exist; outline uses no low-confidence facts) are checked by scripts/check_brief.py.",
+  "type": "object",
+  "required": ["schema", "topic", "question", "language", "researched_on", "web_access", "versions", "facts", "disputed", "dont_say", "gaps"],
+  "additionalProperties": false,
+  "$defs": {
+    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "factId": { "type": "string", "pattern": "^F[1-9][0-9]*$" },
+    "versionId": { "type": "string", "pattern": "^V[1-9][0-9]*$" },
+    "source": {
+      "type": "object",
+      "required": ["url", "title", "publisher", "quote", "accessed"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "pattern": "^https?://" },
+        "title": { "type": "string", "minLength": 1 },
+        "publisher": { "type": "string", "minLength": 1 },
+        "published": { "anyOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+        "quote": { "type": "string", "minLength": 1, "not": { "pattern": "(\\.\\.\\.|…)" } },
+        "accessed": { "$ref": "#/$defs/date" }
+      }
+    },
+    "fact": {
+      "type": "object",
+      "required": ["id", "claim", "type", "version", "confidence", "sources"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/factId" },
+        "claim": { "type": "string", "minLength": 1 },
+        "claim_local": { "type": "string" },
+        "type": { "enum": ["legend", "history", "practice", "science", "figure", "current"] },
+        "version": { "anyOf": [{ "$ref": "#/$defs/versionId" }, { "type": "null" }] },
+        "confidence": { "enum": ["high", "medium", "low"] },
+        "sources": { "type": "array", "maxItems": 3, "items": { "$ref": "#/$defs/source" } }
+      }
+    }
+  },
+  "properties": {
+    "schema": { "const": "research-brief/1" },
+    "topic": { "type": "string", "minLength": 1 },
+    "question": { "type": "string", "minLength": 1 },
+    "language": { "type": "string", "minLength": 2 },
+    "researched_on": { "$ref": "#/$defs/date" },
+    "web_access": { "type": "boolean" },
+    "angle": { "type": "string" },
+    "hooks": { "type": "array", "items": { "type": "string" } },
+    "outline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["beat", "facts"],
+        "additionalProperties": false,
+        "properties": {
+          "beat": { "type": "string", "minLength": 1 },
+          "facts": { "type": "array", "items": { "$ref": "#/$defs/factId" } }
+        }
+      }
+    },
+    "versions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "summary", "facts"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/versionId" },
+          "name": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string" },
+          "facts": { "type": "array", "items": { "$ref": "#/$defs/factId" } }
+        }
+      }
+    },
+    "facts": { "type": "array", "minItems": 1, "maxItems": 40, "items": { "$ref": "#/$defs/fact" } },
+    "disputed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["point", "positions"],
+        "additionalProperties": false,
+        "properties": {
+          "point": { "type": "string", "minLength": 1 },
+          "positions": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+          "facts": { "type": "array", "items": { "$ref": "#/$defs/factId" } }
+        }
+      }
+    },
+    "dont_say": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "why"],
+        "additionalProperties": false,
+        "properties": {
+          "claim": { "type": "string", "minLength": 1 },
+          "why": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "pattern": "^https?://" }
+        }
+      }
+    },
+    "gaps": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  }
+}

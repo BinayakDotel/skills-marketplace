@@ -20,6 +20,12 @@ jobs:
       - name: marketplace.json is valid JSON
         run: python3 -m json.tool .claude-plugin/marketplace.json > /dev/null
 
+      - name: Example research briefs follow research-brief/1
+        run: |
+          for brief in skills/research/examples/*.json; do
+            python3 skills/research/scripts/check_brief.py "$brief"
+          done
+
       - name: Example specs fit their pages (estimate only, no browser needed)
         run: |
           for spec in skills/visual-notes/examples/*.json; do

@@ -1,0 +1,233 @@
+{
+  "schema": "research-brief/1",
+  "topic": "Kasthamandap",
+  "question": "How did Kasthamandap come to be, and how did it give Kathmandu its name?",
+  "language": "ne",
+  "researched_on": "2026-10-09",
+  "web_access": true,
+  "angle": "The city named after one wooden pavilion",
+  "hooks": [
+    "One wooden pavilion gave Kathmandu its name.",
+    "Legend says this whole building came from a single tree."
+  ],
+  "outline": [
+    { "beat": "One wooden pavilion gave Kathmandu its name", "facts": ["F1"] },
+    { "beat": "Legend says its timber came from a single tree", "facts": ["F2", "F3"] },
+    { "beat": "On 25 April 2015 it collapsed, and ten blood donors died", "facts": ["F5", "F6"] },
+    { "beat": "Digging under the rubble dated the site to the 7th century CE", "facts": ["F4"] },
+    { "beat": "Rebuilt, it reopened in April 2022", "facts": ["F7"] }
+  ],
+  "versions": [
+    {
+      "id": "V1",
+      "name": "Single-tree legend",
+      "summary": "Legend says all the timber came from one giant tree; the Nepali Times account ties it to the tree god Kalpa Brikshya, who once came to Kathmandu to watch the Machindranath chariot festival.",
+      "facts": ["F2", "F3"]
+    }
+  ],
+  "facts": [
+    {
+      "id": "F1",
+      "claim": "The name Kathmandu comes from Kasthamandap, a wooden pavilion.",
+      "claim_local": "काठमाडौंको नाम काष्ठमण्डप नामको काठको पाटीबाट आएको हो।",
+      "type": "history",
+      "version": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kathmandu",
+          "title": "Kathmandu",
+          "publisher": "Wikipedia",
+          "published": null,
+          "quote": "The Nepali name Kathmandu comes from Kasthamandap.",
+          "accessed": "2026-10-09"
+        },
+        {
+          "url": "https://thehimalayantimes.com/nepal/president-bhandari-inaugurates-reconstructed-kashthamandap-temple",
+          "title": "President Bhandari inaugurates reconstructed Kashthamandap temple",
+          "publisher": "The Himalayan Times",
+          "published": "2022-04-05",
+          "quote": "the temple which is the source of the name 'Kathmandu'",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "claim": "Legend says all the timber used to build Kasthamandap came from a single tree.",
+      "claim_local": "किंवदन्तीअनुसार काष्ठमण्डप बनाउन प्रयोग भएको सबै काठ एउटै रुखबाट आएको थियो।",
+      "type": "legend",
+      "version": "V1",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kathmandu",
+          "title": "Kathmandu",
+          "publisher": "Wikipedia",
+          "published": null,
+          "quote": "According to legends, all the timber used to build the pagoda was obtained from a single tree.",
+          "accessed": "2026-10-09"
+        },
+        {
+          "url": "https://nepalitimes.com/resurrecting-kasthamandap-from-the-rubble",
+          "title": "Resurrecting Kasthamandap from the rubble",
+          "publisher": "Nepali Times",
+          "published": "2020-08-13",
+          "quote": "legend has it that it was constructed from the timber of single giant tree",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "claim": "Legend says the tree god Kalpa Brikshya once visited Kathmandu to watch the Machindranath chariot festival.",
+      "claim_local": "किंवदन्तीअनुसार रुखका देवता कल्पवृक्ष एक पटक मछिन्द्रनाथको रथयात्रा हेर्न काठमाडौं आएका थिए।",
+      "type": "legend",
+      "version": "V1",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nepalitimes.com/resurrecting-kasthamandap-from-the-rubble",
+          "title": "Resurrecting Kasthamandap from the rubble",
+          "publisher": "Nepali Times",
+          "published": "2020-08-13",
+          "quote": "The tree god Kalpa Brikshya is supposed to have visited Kathmandu once to witness the Machindranath chariot festival",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "claim": "Archaeological tests, including a 2016 excavation by the Department of Archaeology and Durham University, date the site to the 7th century CE.",
+      "claim_local": "सन् २०१६ को उत्खननसहितका पुरातात्त्विक परीक्षणले यो स्थल इस्वीको सातौँ शताब्दीको भएको देखाउँछन्।",
+      "type": "history",
+      "version": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kasthamandap",
+          "title": "Kasthamandap",
+          "publisher": "Wikipedia",
+          "published": null,
+          "quote": "indicate that the Kasthamandap was built in the 7th century CE",
+          "accessed": "2026-10-09"
+        },
+        {
+          "url": "https://nepalitimes.com/resurrecting-kasthamandap-from-the-rubble",
+          "title": "Resurrecting Kasthamandap from the rubble",
+          "publisher": "Nepali Times",
+          "published": "2020-08-13",
+          "quote": "in 2016 by the Department of Archaeology and Durham University puts the origins of the site even further back to the 7th century CE",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "F5",
+      "claim": "On 25 April 2015, Kasthamandap collapsed along with many other buildings in Kathmandu Durbar Square.",
+      "claim_local": "२५ अप्रिल २०१५ मा काष्ठमण्डप काठमाडौं दरबार क्षेत्रका अरू धेरै भवनसँगै ढल्यो।",
+      "type": "history",
+      "version": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kasthamandap",
+          "title": "Kasthamandap",
+          "publisher": "Wikipedia",
+          "published": null,
+          "quote": "On 25 April 2015, Kasthamandap and many other buildings in the Kathmandu Durbar Square collapsed",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "F6",
+      "claim": "When it collapsed, ten blood donors inside were killed.",
+      "claim_local": "यो ढल्दा भित्र रक्तदान गरिरहेका दस जनाको ज्यान गयो।",
+      "type": "history",
+      "version": null,
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nepalitimes.com/resurrecting-kasthamandap-from-the-rubble",
+          "title": "Resurrecting Kasthamandap from the rubble",
+          "publisher": "Nepali Times",
+          "published": "2020-08-13",
+          "quote": "The structure collapsed before the blood donors could scramble out to safety, killing 10 of them.",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "F7",
+      "claim": "President Bidhya Devi Bhandari inaugurated the rebuilt Kasthamandap in April 2022.",
+      "claim_local": "राष्ट्रपति विद्यादेवी भण्डारीले सन् २०२२ अप्रिलमा पुनर्निर्मित काष्ठमण्डपको उद्घाटन गर्नुभयो।",
+      "type": "history",
+      "version": null,
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://thehimalayantimes.com/nepal/president-bhandari-inaugurates-reconstructed-kashthamandap-temple",
+          "title": "President Bhandari inaugurates reconstructed Kashthamandap temple",
+          "publisher": "The Himalayan Times",
+          "published": "2022-04-05",
+          "quote": "President Bidhya Devi Bhandari today inaugurated the much-hyped Kashthamandap temple",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "F8",
+      "claim": "Carbon dating of one wooden joint in a beam gave a 5th-century date, but archaeologists have found no evidence of a structure that old.",
+      "claim_local": "एउटा काठको जोर्नी (मेख) को कार्बन डेटिङले पाँचौँ शताब्दी देखायो, तर त्यति पुरानो संरचना भएको प्रमाण पुरातत्त्वविद्हरूले भेटेका छैनन्।",
+      "type": "history",
+      "version": null,
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nepalitimes.com/resurrecting-kasthamandap-from-the-rubble",
+          "title": "Resurrecting Kasthamandap from the rubble",
+          "publisher": "Nepali Times",
+          "published": "2020-08-13",
+          "quote": "Recent carbon dating also proved that a mekh (wooden joint) used in a wooden beam is even older -- from the 5th century.",
+          "accessed": "2026-10-09"
+        },
+        {
+          "url": "https://nepalitimes.com/resurrecting-kasthamandap-from-the-rubble",
+          "title": "Resurrecting Kasthamandap from the rubble",
+          "publisher": "Nepali Times",
+          "published": "2020-08-13",
+          "quote": "Archaeologists have not found any evidence that there was a structure here from that far back",
+          "accessed": "2026-10-09"
+        }
+      ]
+    }
+  ],
+  "disputed": [
+    {
+      "point": "How old the site is",
+      "positions": [
+        "Archaeology dates the site to the 7th century CE.",
+        "One carbon-dated wooden joint points to the 5th century, but no structure that old has been found."
+      ],
+      "facts": ["F4", "F8"]
+    }
+  ],
+  "dont_say": [
+    {
+      "claim": "Kasthamandap was built from a single tree.",
+      "why": "That is the legend. Attribute it: 'legend says'."
+    },
+    {
+      "claim": "Kasthamandap is 1,500 years old.",
+      "why": "Only one wooden joint was carbon-dated to the 5th century; the site itself is dated to the 7th century CE."
+    }
+  ],
+  "gaps": [
+    "The Nepali Times names a 1143 CE manuscript as the earliest written mention; the manuscript itself was not opened.",
+    "Accounts differ on who led the rebuild (a citizen-led committee in 2020, Kathmandu Metropolitan City by 2022); not needed for this script."
+  ],
+  "notes": [
+    "The 2015 collapse killed ten people; keep that beat respectful and do not show bodies."
+  ]
+}
