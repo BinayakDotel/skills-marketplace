@@ -1,0 +1,18 @@
+# Godot starter: set GODOT to your binary. Swap the runner line for gdUnit4 if you use it.
+godot := env_var_or_default("GODOT", "godot")
+
+dev:
+    {{godot}} --editor --path .
+
+test-q:
+    #!/usr/bin/env bash
+    out=$({{godot}} --headless --path . -s addons/gut/gut_cmdln.gd -gexit 2>&1); code=$?
+    if [ ${#out} -gt 4000 ]; then printf '%s\n' "${out: -4000}"; echo TRUNCATED; else printf '%s\n' "$out"; fi
+    exit $code
+
+# Godot has no whole-project type check; the editor and test run report script errors.
+typecheck:
+    @echo "n/a for Godot (errors surface in just test-q)"
+
+lint:
+    gdlint . && gdformat --check .

@@ -1,0 +1,12 @@
+---
+description: UI rules - follow the design contract
+globs: <<web_dir>>/app/**,<<web_dir>>/components/**
+alwaysApply: false
+---
+- The design contract is `docs/design/README.md` with references in `docs/design/screens/`. Match them; do not redesign. Use the `ui-from-reference` skill for any UI change.
+- Colors, fonts, radii and spacing only from the contract's tokens. No hex values and no arbitrary Tailwind values in components.
+- One primary action per screen; its label says what happens next.
+- Presentational components take typed props and never fetch data. A container per screen loads data and passes it down.
+- Every screen has a preview route fed by fixtures, listed in `docs/design/screens.json`.
+- Every clickable thing is a button or link with a visible focus ring. Respect `prefers-reduced-motion`.
+- Copy: sentence case, plain verbs, no exclamation marks, no emoji in product UI.

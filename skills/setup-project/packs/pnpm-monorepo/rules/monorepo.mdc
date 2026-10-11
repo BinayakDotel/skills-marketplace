@@ -1,0 +1,11 @@
+---
+description: Monorepo and tooling conventions (pnpm workspaces)
+globs: package.json,**/package.json,pnpm-workspace.yaml,turbo.json,tsconfig*.json,**/tsconfig*.json
+alwaysApply: false
+---
+- pnpm only. Never npm or yarn; never commit a second lockfile.
+- Internal packages use `workspace:*`. Pin tooling versions exactly where the root pins them.
+- Run tasks through the justfile or root scripts; each package exposes `build`, `test`, `typecheck`.
+- `<<core_pkg>>` is source-only (`exports` → `src/index.ts`); Next apps list it in `transpilePackages`.
+- tsconfigs extend `tsconfig.base.json`; don't duplicate its options.
+- Don't add lint or format rules without an entry in `docs/DECISIONS.md`.

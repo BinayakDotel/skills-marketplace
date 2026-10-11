@@ -1,0 +1,11 @@
+---
+description: Next.js App Router conventions
+globs: <<web_dir>>/app/**,<<web_dir>>/components/**,<<web_dir>>/next.config.*
+alwaysApply: false
+---
+- This Next.js version may differ from your training data. Before using an API, read the matching guide in the installed package's docs (`node_modules/next/dist/docs/` when present) or the docs for the installed version.
+- App Router only. Server Components by default; "use client" only for state, events or browser APIs.
+- Route handlers and server actions are thin: parse input with zod, call a domain or backend function, return.
+- `params` and `searchParams` are Promises in pages and route handlers; await them.
+- No secrets in client components. Only `NEXT_PUBLIC_` variables reach the browser.
+- Shared logic lives in `<<core_dir>>`; never copy it into the app.

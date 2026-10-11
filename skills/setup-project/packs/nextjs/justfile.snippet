@@ -1,0 +1,8 @@
+dev:
+    <<pm>> run dev
+
+typecheck:
+    <<pmx>> tsc --noEmit
+
+lint:
+    <<pmx>> eslint . --max-warnings=0

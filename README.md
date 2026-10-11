@@ -26,6 +26,30 @@ python3 skills/visual-notes/scripts/render_note.py \
 | [visual-notes](skills/visual-notes/) | Turns a topic, document or rough notes into a hand-drawn-style one-page study sheet (cheat sheet / revision notes) as a printable A4 PDF. | 1.0.2 |
 | [conventional-commits](skills/conventional-commits/) | Writes clear Conventional Commits messages (typed subject, body, breaking-change and issue footers) from a diff, staged changes or a short description of the work. | 1.0.0 |
 | [research](skills/research/) | Researches a topic on the web and returns a sourced fact brief: each claim with a link and an exact quote, legend kept apart from history, disputes and myths flagged, plus a JSON block apps can import. | 1.0.0 |
+| [setup-project](skills/setup-project/) | One-time repo setup for dev-flow: project profile (`AGENTS.md`), justfile command contract, stack rules from packs, GitHub issue tracking, design contract. Never edits skills. | 1.0.0 |
+| [tickets](skills/tickets/) | Turns one spec section into small, ordered GitHub issues with acceptance criteria, Files, dependencies and a milestone. | 1.0.0 |
+| [take](skills/take/) | Takes the next ticket, grills its open decisions (max 8), writes Decisions and Files. No code. | 1.0.0 |
+| [implement](skills/implement/) | Builds the ticket test-first, runs checks and a two-axis review, opens the PR, moves the ticket to review. | 1.0.0 |
+| [address](skills/address/) | Fixes PR review comments on the same branch and updates the PR. | 1.0.0 |
+| [done](skills/done/) | After merge: marks merged tickets done and names the next one. | 1.0.0 |
+| [design-package](skills/design-package/) | Designs an app's look once as files a weaker model can follow: Tailwind tokens, reference screens in the app's own classes, components gallery, contract. Run with a strong model. | 1.0.0 |
+| [ui-from-reference](skills/ui-from-reference/) | Builds web UI by translating approved reference screens and tokens, then compares screenshots side by side. | 1.0.0 |
+
+## Dev flow
+
+Eight skills that run a ticket lifecycle in any repo without being edited per project. Skills are global; each repo only holds its own facts.
+
+```
+/setup-project            once per repo: AGENTS.md, justfile contract, stack rules, GitHub tracking
+/tickets <spec section>   plan a phase into small issues on the board
+/take → /implement → /address → /done   one chat per step
+```
+
+For web UI, run `/design-package` once with a strong model (Claude); after that, cheaper models build each screen with `ui-from-reference` and check it with `just shots`.
+
+They rely on Matt Pocock's skills (`grilling`, `tdd`, `code-review`, `pr`) from [mattpocock/skills](https://github.com/mattpocock/skills), installed alongside and never edited. `setup-project` carries stack packs (Next.js, Convex, Vitest, web UI, LLM code, pnpm monorepo, Godot starter) under `skills/setup-project/packs/`.
+
+**Make them global for Cursor and Claude Code:** `./scripts/sync-skill.sh --all` symlinks every skill into `~/.claude/skills`, which Cursor also reads, so edits here apply to every project at once.
 
 ## Install
 

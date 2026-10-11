@@ -1,0 +1,56 @@
+/* <app>/theme.css: the only place colours, fonts and radii are defined.
+   Imported by the app's global CSS after tailwindcss, and by docs/design/screens/_ref.src.css. */
+
+:root {
+  color-scheme: light dark;
+  --bg: #F5F6F8;
+  --surface: #FFFFFF;
+  --sunk: #E9ECF0;
+  --ink: #15191F;
+  --muted: #5A6470;
+  --line: #D3D8DE;
+  --accent: #2F5BB8;
+  --accent-ink: #FFFFFF;
+  --ok: #2E7A4D;
+  --warn: #93570B;
+  --bad: #B42318;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0F1216;
+    --surface: #171B21;
+    --sunk: #1E242B;
+    --ink: #E4E8EC;
+    --muted: #9AA4AF;
+    --line: #2D3540;
+    --accent: #6F97F0;
+    --accent-ink: #0A1020;
+    --ok: #5DBA83;
+    --warn: #E2A84B;
+    --bad: #F2786A;
+  }
+}
+
+@theme inline {
+  --color-*: initial; /* only the names below exist */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sunk: var(--sunk);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+
+  /* next/font (or similar) sets --font-body; references load the same family from Google Fonts */
+  --font-sans: var(--font-body, "Inter"), system-ui, sans-serif;
+  --font-mono: var(--font-code, "JetBrains Mono"), ui-monospace, monospace;
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
