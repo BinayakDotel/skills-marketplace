@@ -1,0 +1,10 @@
+---
+description: Convex conventions
+globs: <<convex_dir>>/**
+alwaysApply: false
+---
+<!-- /setup-project: paste Convex's official AI rules for Cursor (https://docs.convex.dev/ai) above or below these lines; keep these lines. -->
+- Queries and mutations finish fast and never call the network. Anything that calls an external API or a model is an action.
+- Validate every argument with `v`. Check the signed-in user in every public function; never trust the client for ownership.
+- Internal work uses internal functions; follow-ups use `ctx.scheduler`.
+- Tests use `convex-test` against the schema.

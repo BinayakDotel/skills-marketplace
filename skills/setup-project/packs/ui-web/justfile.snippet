@@ -1,0 +1,7 @@
+# Screenshots of previews next to their references -> .shots/compare.html (run `just dev` first)
+shots id="all":
+    <<pmx>> tsx scripts/shots.ts {{id}}
+
+# Rebuild the reference screens' CSS (only when references use the app's Tailwind classes; see design-package)
+ref-css:
+    <<pmx>> @tailwindcss/cli -i docs/design/screens/_ref.src.css -o docs/design/screens/_ref.css

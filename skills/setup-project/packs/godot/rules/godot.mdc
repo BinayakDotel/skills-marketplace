@@ -1,0 +1,12 @@
+---
+description: Godot 4 conventions (starter pack; review once per project)
+globs: **/*.gd,**/*.tscn,**/*.tres,project.godot
+alwaysApply: false
+---
+- Godot 4, GDScript with static types everywhere: typed variables, parameters and return values.
+- Small scenes composed into bigger ones. Signals go up, method calls go down; no `get_node` paths across scenes (use exported references or `%UniqueName`).
+- Autoloads only for true global services (save, audio, events), kept thin.
+- Logic that can be pure lives in plain classes (`RefCounted`) with unit tests.
+- Large scene or resource changes are made in code or described for the human; don't hand-edit big `.tscn`/`.tres` blocks.
+- UI uses the project Theme (`<<theme_path>>`); no per-node colour or font overrides.
+- Tests run headless with `just test-q` (`<<test_runner>>`).

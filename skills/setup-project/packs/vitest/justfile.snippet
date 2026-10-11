@@ -1,0 +1,6 @@
+# Quiet tests: last 4000 characters only, TRUNCATED when cut.
+test-q:
+    #!/usr/bin/env bash
+    out=$(<<pmx>> vitest run --reporter=dot 2>&1); code=$?
+    if [ ${#out} -gt 4000 ]; then printf '%s\n' "${out: -4000}"; echo TRUNCATED; else printf '%s\n' "$out"; fi
+    exit $code

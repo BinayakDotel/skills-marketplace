@@ -1,0 +1,12 @@
+---
+description: Testing conventions (Vitest)
+globs: **/*.test.ts,**/*.test.tsx
+alwaysApply: false
+---
+- Vitest. One behavior per test; name tests as sentences ("rejects a brief with an unknown fact id").
+- Test through public interfaces at the seams agreed in the ticket (see the `tdd` skill). No tests of private internals.
+- Deterministic: fixed seeds, fixture files under `<<fixtures_dir>>`, no network, fake timers for time.
+- Co-locate unit tests as `*.test.ts` next to the source.
+- A bug fix starts with a failing test that reproduces it.
+- Fix the code, not the test, unless the spec changed. Never weaken an assertion to get green.
+- Run tests only with `just test-q`.

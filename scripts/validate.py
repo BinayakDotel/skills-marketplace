@@ -12,6 +12,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 CATALOG = ROOT / ".claude-plugin" / "marketplace.json"
 ALLOWED_KEYS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
+# Extensions read by Cursor and Claude Code; other agents ignore them.
+ALLOWED_KEYS |= {"disable-model-invocation", "argument-hint", "paths"}
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 
