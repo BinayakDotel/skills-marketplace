@@ -23,7 +23,7 @@ Every dev-flow skill uses only these.
 | `just typecheck` | static checks |
 | `just lint` | lint and format check |
 | `just check` | typecheck + lint + tests; must pass before a PR |
-| `just dev` | run locally |
+| `just run` / `just stop` | start the app in the background / stop it (`just logs` to watch) |
 | `just task <n> <todo\|in-progress\|in-review\|done>` | move a ticket (label + board) |
 <<extra_command_rows>>
 

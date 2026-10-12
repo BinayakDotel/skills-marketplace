@@ -29,7 +29,7 @@ One batch, at most 6 questions, each with your recommendation:
 Show the file list first, then write.
 
 - **`AGENTS.md`** from `templates/AGENTS.md`, the block under 60 lines. If it exists, replace only the block between `<!-- dev-flow:start -->` and `<!-- dev-flow:end -->`, or append the block. Keep every other tool's managed block as it is (Next.js writes one between `BEGIN:nextjs-agent-rules` and `END:nextjs-agent-rules`). If only `CLAUDE.md` exists, add the line `See AGENTS.md.` to it.
-- **`justfile`**: merge each pack's `justfile.snippet`, keeping existing recipes. Every contract recipe must exist: `test-q`, `typecheck`, `lint`, `check`, `dev`, `task`. A recipe with no tool for this stack becomes `@echo "n/a for this stack"`.
+- **`justfile`**: merge each pack's `justfile.snippet`, keeping existing recipes. Every contract recipe must exist: `test-q`, `typecheck`, `lint`, `check`, `run`, `stop`, `task`. A recipe with no tool for this stack becomes `@echo "n/a for this stack"`.
 - **`.cursor/rules/<rule>.mdc`** from each chosen pack's `rules/`, with every `<<placeholder>>` filled from detection. Packs never add always-on rules.
 - **GitHub** (if chosen): `docs/agents/issue-tracker.md` and `.github/ISSUE_TEMPLATE/ticket.md` from `templates/`; `scripts/task.sh` and `scripts/project-env.sh` from `templates/` (make them executable); labels: `gh label create status:todo --color ededed`, `gh label create status:in-progress --color fbca04`, `gh label create status:in-review --color 0e8a16` (ignore "already exists").
 - **`docs/DECISIONS.md`** from `templates/DECISIONS.md` if missing.

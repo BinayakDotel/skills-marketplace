@@ -1,5 +1,5 @@
 // scripts/shots.ts - screenshots each screen's preview next to its design reference.
-// usage: just shots [screen-id|all]   (needs `just dev` running; SHOTS_BASE overrides the URL)
+// usage: just shots [screen-id|all]   (needs `just run` first; SHOTS_BASE overrides the URL)
 // Each shot uses a viewport as tall as the page, so fixed and sticky bars land where a user sees them.
 import { chromium, type Page } from "playwright";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";

@@ -28,7 +28,7 @@ My agent skills. Each skill is a folder with a `SKILL.md` in the open [Agent Ski
 ## How the dev flow works
 
 - **Skills are global and never edited per project.** Each repo keeps only its own facts, written once by `/setup-project`.
-- **Every repo has the same commands** (`just test-q`, `just check`, `just dev`, `just task <n> <status>`), so the skills work in any stack. Stack details come from packs in `skills/setup-project/packs/` (Next.js, Convex, Vitest, web UI, LLM code, pnpm monorepo, Godot).
+- **Every repo has the same commands** (`just test-q`, `just check`, `just run`, `just task <n> <status>`), so the skills work in any stack. Stack details come from packs in `skills/setup-project/packs/` (Next.js, Convex, Vitest, web UI, LLM code, pnpm monorepo, Godot).
 - **Tickets live in GitHub Issues and a project board**, used through the `gh` command line.
 - **One chat per step:**
 

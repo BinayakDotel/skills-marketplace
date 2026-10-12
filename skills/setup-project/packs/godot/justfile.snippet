@@ -1,8 +1,11 @@
 # Godot starter: set GODOT to your binary. Swap the runner line for gdUnit4 if you use it.
 godot := env_var_or_default("GODOT", "godot")
 
-dev:
+run:
     {{godot}} --editor --path .
+
+stop:
+    @echo "close the Godot editor"
 
 test-q:
     #!/usr/bin/env bash

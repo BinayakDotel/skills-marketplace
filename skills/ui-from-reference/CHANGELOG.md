@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 · 2026-10-12
+
+- Starts the app with `just run` before taking screenshots.
+
 ## 1.0.0 (2026-10-10)
 
 First release in this repo.

@@ -52,7 +52,7 @@
       "source": "./skills",
       "skills": ["./setup-project", "./tickets", "./take", "./implement", "./address", "./done", "./ui-from-reference", "./design-package"],
       "description": "A ticket lifecycle for AI coding agents that works in any repo without editing the skills: one-time project setup from stack packs, spec-to-ticket planning on GitHub Issues, take / implement / address / done, a design package made once by a strong model, and UI translated from its reference screens.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": { "name": "Binayak Dotel", "url": "https://github.com/BinayakDotel" },
       "license": "MIT",
       "homepage": "https://github.com/BinayakDotel/skills-marketplace#dev-flow",

@@ -1,7 +1,34 @@
-dev:
-    <<pm>> run dev
+# Start the app in the background (logs in .run/). With the convex pack, keep the convex line; otherwise delete it.
+run:
+    #!/usr/bin/env bash
+    set -uo pipefail
+    mkdir -p .run
+    if [ -f .run/pids ] && kill -0 "$(head -1 .run/pids)" 2>/dev/null; then
+      echo "already running: http://localhost:3000 (just stop to stop)"; exit 0
+    fi
+    set -m
+    : > .run/pids
+    nohup <<pmx>> convex dev > .run/convex.log 2>&1 & echo $! >> .run/pids
+    nohup <<pmx>> next dev > .run/next.log 2>&1 & echo $! >> .run/pids
+    for i in $(seq 1 60); do curl -s -o /dev/null http://localhost:3000 && break; sleep 1; done
+    echo "running: http://localhost:3000 · logs: just logs · stop: just stop"
+
+# Stop what `just run` started
+stop:
+    #!/usr/bin/env bash
+    if [ -f .run/pids ]; then
+      while read -r p; do kill -- "-$p" 2>/dev/null || kill "$p" 2>/dev/null; done < .run/pids
+      rm -f .run/pids
+    fi
+    lsof -ti tcp:3000 2>/dev/null | xargs kill 2>/dev/null || true
+    echo "stopped"
+
+# Follow the logs of `just run` (Ctrl+C to leave; the app keeps running)
+logs:
+    tail -f .run/*.log
 
 typecheck:
+    <<pmx>> next typegen
     <<pmx>> tsc --noEmit
 
 lint:
