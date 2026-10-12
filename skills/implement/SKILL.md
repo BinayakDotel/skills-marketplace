@@ -10,7 +10,7 @@ argument-hint: "[#issue]"
 
 Project facts (commands, tracker, git tool, base branch, models) live in `AGENTS.md`. Read it first.
 
-1. **Load.** The named issue, else the one labelled `status:in-progress`: `gh issue view <n> --json title,body`. No `## Decisions` section → stop and say `/take` must run first.
+1. **Load.** The named issue, else the one labelled `status:in-progress`: `gh issue view <n> --json title,body`. No `## Decisions` section → stop and say `/take` must run first. If the issue is not labelled `status:in-progress`, run `just task <n> in-progress` first.
 2. **Scope.** Read only the files under `## Files`. Needs more than ~5 files → propose a split and stop.
 3. **Build** with the `tdd` skill: red → green with `just test-q` only; the repo is green after every step. If the ticket touches screens, components or styles, also follow `ui-from-reference`.
 4. **Gates.** `just check` passes. Then `code-review` with fixed point = the base branch and spec = this issue. Fix the real findings; list the rest in the Outcome.

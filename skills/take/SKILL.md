@@ -15,7 +15,7 @@ Project facts (commands, tracker, git tool, base branch, models) live in `AGENTS
    - `gh issue list --label status:todo --milestone "<milestone>" --json number,title --limit 10`
    - `gh issue view <n> --json title,body,milestone`
    - for each `Depends: #x`: `gh issue view <x> --json state -q .state`
-3. **Claim.** `just task <n> in-progress`. Check out the base: `gt checkout <base>` or `git switch <base>`.
+3. **Claim (do this before anything else).** Run `just task <n> in-progress` and show its output line (`#<n> -> in-progress`). If it fails, stop and report the error. Then check out the base: `gt checkout <base>` or `git switch <base>`.
 4. **Read.** The files under `## Files`, nothing more. For gaps, search the code, then open extra files one at a time.
 5. **Grill.** Use the `grilling` skill on the decisions the ticket leaves open: at most 8 questions, one batch, each with your recommendation. Look up facts yourself; ask only for decisions.
 6. **Write.** Add `## Decisions` and append any new paths to `## Files`. Write the whole body to a temp file, then `gh issue edit <n> --body-file <tmp>`.
