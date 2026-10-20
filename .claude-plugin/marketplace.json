@@ -38,7 +38,7 @@
       "displayName": "Research Brief",
       "source": "./skills/research",
       "description": "Research a topic on the web and return a sourced fact brief: every claim with a link and an exact quote, legend kept apart from history, versions, disputes and myths flagged, plus a JSON block (research-brief/1) that apps can import and check.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": { "name": "Binayak Dotel", "url": "https://github.com/BinayakDotel" },
       "license": "MIT",
       "homepage": "https://github.com/BinayakDotel/skills-marketplace/tree/main/skills/research",

@@ -5,17 +5,19 @@
   "language": "ne",
   "researched_on": "2026-10-09",
   "web_access": true,
-  "angle": "The city named after one wooden pavilion",
+  "angle": "The wooden shelter a whole city is named after",
   "hooks": [
-    "One wooden pavilion gave Kathmandu its name.",
-    "Legend says this whole building came from a single tree."
+    "A whole city carries the name of one wooden shelter. Which one?",
+    "Legend says one tree gave all its wood. What did the ground underneath it say?"
   ],
   "outline": [
-    { "beat": "One wooden pavilion gave Kathmandu its name", "facts": ["F1"] },
-    { "beat": "Legend says its timber came from a single tree", "facts": ["F2", "F3"] },
-    { "beat": "On 25 April 2015 it collapsed, and ten blood donors died", "facts": ["F5", "F6"] },
-    { "beat": "Digging under the rubble dated the site to the 7th century CE", "facts": ["F4"] },
-    { "beat": "Rebuilt, it reopened in April 2022", "facts": ["F7"] }
+    { "beat": "A whole city, Kathmandu, carries the name of one wooden shelter", "facts": ["F1"] },
+    { "beat": "The story people tell: all its timber came from a single tree", "facts": ["F2"] },
+    { "beat": "In that story, the tree god came down to watch the Machindranath chariot festival", "facts": ["F3"] },
+    { "beat": "In April 2015 the earthquake brought it down, with ten blood donors inside", "facts": ["F5", "F6"] },
+    { "beat": "The turn: how old was it really? Digging under the rubble dated the site to the 7th century", "facts": ["F4"] },
+    { "beat": "Rebuilt, it opened again in April 2022", "facts": ["F7"] },
+    { "beat": "The shelter stands again in the square of the city that took its name", "facts": ["F1", "F7"] }
   ],
   "versions": [
     {
