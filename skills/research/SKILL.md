@@ -9,6 +9,8 @@ compatibility: 'Needs web search and page opening (turn web search on in claude.
 
 Find out what is actually known about a topic and hand back a brief that someone can write from without re-checking everything. Whoever reads the brief will trust it, so accuracy beats completeness: ten solid facts are worth more than thirty guesses.
 
+When the brief is for a story (a narrated video, an article), it must also carry the story: a person or object to follow, moments you can see, a question that pulls the audience through, and why it matters to their own life. Facts that only say *who reported what* make a report, not a story.
+
 ## Input
 
 - A topic or question, usually with the user's own idea and notes. Treat their notes as leads to check, never as facts.
@@ -18,21 +20,27 @@ If the topic is ambiguous (two places with one name, two festivals with similar 
 
 ## Workflow
 
-1. **Break it down** (silently): 4–8 sub-questions. For the origin of a temple, festival or custom: what each legend or text says (one version at a time), which text and roughly how old, what recorded history or archaeology shows and when, what people do today, and what is commonly said but wrong.
+1. **Break it down** (silently): 4–8 sub-questions. For the origin of a temple, festival or custom: what each legend or text says (one version at a time), which text and roughly how old, what recorded history or archaeology shows and when, what people do today, and what is commonly said but wrong. For a story, add the story questions:
+   - Who or what is at the centre: a person, a god in a legend, a community, an object, a journey?
+   - What is the single most vivid moment, and what exactly happens in it: who does what, holding what, where?
+   - Which numbers could be shown on screen (how many people, how many days, how far)?
+   - If a text tells it, what are its actual words at the key moment?
+   - What question does the topic make people ask ("why would an army salute a bundle of crops?"), and which fact answers it?
+   - What does an ordinary family do with it today, step by step, and what does it mean for their lives?
 2. **Search wide, then deep.** Use encyclopedic overviews to map names, dates and versions, then open the sources they cite and better ones (see *Source quality*). Search in English and in the topic's own language and script (for Nepal topics, also in Nepali/Devanagari). Budget: about 6–12 searches and 5–10 opened pages.
 3. **Open every page you cite.** Never cite a search snippet, a page you could not open, or your own memory. If a page is paywalled or will not load, leave it out and add it to `gaps`.
-4. **Record facts while reading**, one claim per fact, each with the exact words that support it. A quote is 5–25 consecutive words copied character for character from the page, in the page's own language and spelling. No ellipses inside a quote and no stitching of separate sentences. If no short passage supports a claim, the claim is unsupported: drop it, or reword it to what the page actually says.
+4. **Record facts while reading**, one claim per fact, each with the exact words that support it. Prefer facts that describe something happening (who, what, where, with what) over facts about who wrote or listed it. A quote is 5–25 consecutive words copied character for character from the page, in the page's own language and spelling. No ellipses inside a quote and no stitching of separate sentences. If no short passage supports a claim, the claim is unsupported: drop it, or reword it to what the page actually says.
 5. **Label and rate** each fact (tables below).
 6. **Keep versions apart.** When legends or accounts differ, give each one a `versions` entry and tie its facts to it. Never blend two versions into one smooth story.
 7. **Hunt the myths.** Popular claims you found to be wrong or unsupported go into `dont_say`. Real disagreement between good sources goes into `disputed`.
-8. **Shape the story** when the user is making content: one `angle`, 2–3 `hooks`, and an `outline` of 4–8 beats that cite fact ids. Only high- and medium-confidence facts may appear in the outline.
+8. **Shape the story** when the user is making content (see *Story shape*): one `angle`, 2–3 `hooks`, and an `outline` of 5–8 beats that cite fact ids. Only high- and medium-confidence facts may appear in the outline.
 9. **Self-check** (list below), then reply.
 
 ## Fact types
 
 | type | Meaning | How to word the claim |
 |---|---|---|
-| `legend` | what a scripture, text or folk tradition says happened | Name who says it: "The Devi Mahatmya says…", "Local legend says…" |
+| `legend` | what a scripture, text or folk tradition says happened | Name the story or text that tells it: "The Devi Mahatmya says…", "Local legend says…" (never the website you read it on) |
 | `history` | documented events: inscriptions, records, archaeology, dated accounts | Plain statement with the date |
 | `practice` | what people do today, how it is observed | Present tense |
 | `science` | a natural or scientific explanation | Plain statement |
@@ -47,6 +55,23 @@ If the topic is ambiguous (two places with one name, two festivals with similar 
 
 A claim may not say more than its quote supports. Dates may also come from the source's own publication date (`published`). Watch for words that sneak in extra meaning: "oldest", "first", "only", "always", exact numbers.
 
+## Story shape
+
+For content, the `angle`, `hooks` and `outline` are the story's spine; the writer builds on them.
+
+- `angle`: the story in one line, with its spine: "The bundle of crops a whole army salutes", not "Fulpati: history and significance".
+- `hooks`: scenes or questions an audience can picture, at most two sentences each. Never a summary or the topic's name.
+- `outline`, in this order:
+  1. the hook moment;
+  2. the story itself, following one person, object or journey, in two or three beats;
+  3. the turn: the question the story raises;
+  4. the answer, from the facts (the text's words, the evidence, the reason);
+  5. bring it home: what people do today and what it says about their lives;
+  6. a closing image that echoes the opening.
+- Each beat says only what its own facts support, so a writer who drops one fact can drop its beat.
+- No source, publication or institution names in `angle`, `hooks` or `outline`. The sources live in `sources`, where they belong.
+- `claim_local` is plain spoken language, the way you would tell it. For a legend, attribute it to the story or text ("कथा अनुसार", "दुर्गा सप्तशतीमा"), never to a website, newspaper or organisation.
+
 ## Source quality (best first)
 
 1. Primary texts and their translations (scriptures, chronicles, inscriptions), official records, archaeological reports.
@@ -55,7 +80,7 @@ A claim may not say more than its quote supports. Dates may also come from the s
 4. Established news outlets with a named author and a date.
 5. Wikipedia and general encyclopedias: fine for orientation and for finding sources. Cite them only for uncontroversial basics, and prefer the source they cite.
 
-Never rely only on blogs, tour-company pages, content farms, social posts, AI-written pages or forums. Many sites copy one unsourced sentence from each other; that counts as one source, not ten. More per topic type in `references/source-guide.md` (if present).
+Prefer sources that tell what happened in detail (the text itself, a scholar's account, a long-form feature) over ones that only mention it. Never rely only on blogs, tour-company pages, content farms, social posts, AI-written pages or forums. Many sites copy one unsourced sentence from each other; that counts as one source, not ten. More per topic type in `references/source-guide.md` (if present).
 
 ## Output
 
@@ -121,7 +146,8 @@ Every field with examples: `references/brief-schema.md`. Machine-readable schema
 
 - Every fact has at least one source, and every quote is copied, not paraphrased.
 - No claim says more than its quote (or the source's date) supports.
-- Legends are attributed ("…says"), never stated as history.
+- Legends are attributed to their story or text ("…says"), never stated as history.
+- For content: the outline follows *Story shape*, and `angle`, `hooks` and `outline` name no source.
 - Versions stay separate, and the outline does not merge them.
 - Every referenced id exists, the JSON parses, and nothing follows the JSON block.
 - If you can run Python: `python3 <skill-dir>/scripts/check_brief.py <file>` prints `ok`. It also reads a whole reply saved as `.md` and checks its last `json` block. `--fetch` also checks that each quote appears on its page.

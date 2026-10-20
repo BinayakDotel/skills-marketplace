@@ -14,9 +14,9 @@ The examples on this page show the shape only; they are not researched facts. Fo
 | `language` | string | **req** | Language of the final content, short code | `"ne"` |
 | `researched_on` | string | **req** | Date of the research, `YYYY-MM-DD` | `"2026-10-09"` |
 | `web_access` | boolean | **req** | `false` if you could not search or open pages | `true` |
-| `angle` | string | | One-line story angle | `"The temple older than its own legends"` |
-| `hooks` | string[] | | 2–3 opening lines, in plain words | `["Two legends, one temple."]` |
-| `outline` | object[] | | 4–8 beats; each `{beat, facts}` | see below |
+| `angle` | string | | The story in one line, with its spine (see SKILL.md *Story shape*) | `"The cow that found a god"` |
+| `hooks` | string[] | | 2–3 opening scenes or questions an audience can picture; no source names | `["Every day one cow's milk dripped onto the same spot in the forest. Why?"]` |
+| `outline` | object[] | | 5–8 beats in the *Story shape* order; each `{beat, facts}` | see below |
 | `versions` | object[] | **req** | One entry per competing account; `[]` if there is only one | see below |
 | `facts` | object[] | **req** | The facts, usually 8–20 | see below |
 | `disputed` | object[] | **req** | Real disagreements between good sources; `[]` if none | see below |
@@ -63,7 +63,7 @@ Two quotes from one page are two entries with the same `url`.
 { "beat": "Two legends explain how the linga was found", "facts": ["F3", "F5"] }
 ```
 
-Only `high` and `medium` facts. Keep each version's beats separate.
+Only `high` and `medium` facts. Keep each version's beats separate. Each beat says only what its own facts support (an app may drop a beat whose fact the writer can't use), and names no source. Order: the hook moment, the story (two or three beats), the turn (the question the story raises), the answer, bring it home (today), a closing image that echoes the opening.
 
 ## `disputed[]`
 
