@@ -9,7 +9,7 @@ compatibility: 'Needs web search and page opening (turn web search on in claude.
 
 Find out what is actually known about a topic and hand back a brief that someone can write from without re-checking everything. Whoever reads the brief will trust it, so accuracy beats completeness: ten solid facts are worth more than thirty guesses.
 
-When the brief is for a story (a narrated video, an article), it must also carry the story: a person or object to follow, moments you can see, a question that pulls the audience through, and why it matters to their own life. Facts that only say *who reported what* make a report, not a story.
+When the brief is for a story (a narrated video, an article), it must also carry the story: a person or object to follow, moments you can see, a question that pulls the audience through, and why it matters to their own life. Facts that only say *who reported what* make a report, not a story. And the story must still be true when someone watches it years later (see *Any day, any year*).
 
 ## Input
 
@@ -26,7 +26,8 @@ If the topic is ambiguous (two places with one name, two festivals with similar 
    - Which numbers could be shown on screen (how many people, how many days, how far)?
    - If a text tells it, what are its actual words at the key moment?
    - What question does the topic make people ask ("why would an army salute a bundle of crops?"), and which fact answers it?
-   - What does an ordinary family do with it today, step by step, and what does it mean for their lives?
+   - When does it happen? Its place in the calendar (which month, lunar day or season; every year, every twelve years), so the story can say "every year on …" instead of "today".
+   - What does an ordinary family do with it each time it comes round, step by step, and what does it mean for their lives?
 2. **Search wide, then deep.** Use encyclopedic overviews to map names, dates and versions, then open the sources they cite and better ones (see *Source quality*). Search in English and in the topic's own language and script (for Nepal topics, also in Nepali/Devanagari). Budget: about 6–12 searches and 5–10 opened pages.
 3. **Open every page you cite.** Never cite a search snippet, a page you could not open, or your own memory. If a page is paywalled or will not load, leave it out and add it to `gaps`.
 4. **Record facts while reading**, one claim per fact, each with the exact words that support it. Prefer facts that describe something happening (who, what, where, with what) over facts about who wrote or listed it. A quote is 5–25 consecutive words copied character for character from the page, in the page's own language and spelling. No ellipses inside a quote and no stitching of separate sentences. If no short passage supports a claim, the claim is unsupported: drop it, or reword it to what the page actually says.
@@ -42,10 +43,10 @@ If the topic is ambiguous (two places with one name, two festivals with similar 
 |---|---|---|
 | `legend` | what a scripture, text or folk tradition says happened | Name the story or text that tells it: "The Devi Mahatmya says…", "Local legend says…" (never the website you read it on) |
 | `history` | documented events: inscriptions, records, archaeology, dated accounts | Plain statement with the date |
-| `practice` | what people do today, how it is observed | Present tense |
+| `practice` | what people do, how it is observed, every time it comes round | Habitual present, with when it happens: "Every year on Navami of Dashain, …" |
 | `science` | a natural or scientific explanation | Plain statement |
 | `figure` | a number, measurement or statistic | Include the unit and the year it applies to |
-| `current` | news, or anything likely to change | Include "as of <date>" |
+| `current` | news, or anything likely to change: this year's date of a festival, a price, a count | Include "as of <date>"; the custom itself is a `practice` fact |
 
 ## Confidence
 
@@ -55,22 +56,31 @@ If the topic is ambiguous (two places with one name, two festivals with similar 
 
 A claim may not say more than its quote supports. Dates may also come from the source's own publication date (`published`). Watch for words that sneak in extra meaning: "oldest", "first", "only", "always", exact numbers.
 
+## Any day, any year
+
+A video or article made from the brief stays up for years, so everything in it must be true on any day it is read or watched.
+
+- Word `angle`, `hooks`, `outline` and `claim_local` for any day: never "today", "tomorrow", "this year" or "now" for the research day.
+- Something that recurs (a festival, a ritual, a season, a harvest) is a `practice` fact worded as recurring, with its calendar anchor from a source: "Every year on Navami of Dashain, the temple opens to the public for one day." Use the festival day or lunar day (tithi) the source gives: festivals that follow the moon fall on a different calendar date every year, so this year's date is a separate `current` fact with the year. Word something as recurring only when a source says it recurs.
+- A number that changes (a price, a count of visitors, a population) is a `figure` with its year. Never work out a new number (days between two dates, a total, an age) in a claim, a hook or the outline.
+- If the user asks about this year's event, still research what happens every time; keep this year's specifics as dated `current` facts.
+
 ## Story shape
 
 For content, the `angle`, `hooks` and `outline` are the story's spine; the writer builds on them.
 
 - `angle`: the story in one line, with its spine: "The bundle of crops a whole army salutes", not "Fulpati: history and significance".
-- `hooks`: scenes or questions an audience can picture, at most two sentences each. Never a summary or the topic's name.
+- `hooks`: scenes or questions an audience can picture, at most two sentences each, each resting on facts in the brief. Never a summary, the topic's name, or a scene that is true only on one day ("This morning the queue already…").
 - `outline`, in this order:
   1. the hook moment;
   2. the story itself, following one person, object or journey, in two or three beats;
   3. the turn: the question the story raises;
   4. the answer, from the facts (the text's words, the evidence, the reason);
-  5. bring it home: what people do today and what it says about their lives;
+  5. bring it home: what people do every time it comes round, and what it says about their lives;
   6. a closing image that echoes the opening.
 - Each beat says only what its own facts support, so a writer who drops one fact can drop its beat.
 - No source, publication or institution names in `angle`, `hooks` or `outline`. The sources live in `sources`, where they belong.
-- `claim_local` is plain spoken language, the way you would tell it. For a legend, attribute it to the story or text ("कथा अनुसार", "दुर्गा सप्तशतीमा"), never to a website, newspaper or organisation.
+- `claim_local` is plain spoken language, the way you would tell it. For a legend, attribute it to the story or text ("कथा अनुसार", "दुर्गा सप्तशतीमा"), never to a website, newspaper or organisation. A practice is told as recurring ("हरेक वर्ष दशैंको नवमीमा …"), never as "आज" or "यो वर्ष".
 
 ## Source quality (best first)
 
@@ -148,6 +158,7 @@ Every field with examples: `references/brief-schema.md`. Machine-readable schema
 - No claim says more than its quote (or the source's date) supports.
 - Legends are attributed to their story or text ("…says"), never stated as history.
 - For content: the outline follows *Story shape*, and `angle`, `hooks` and `outline` name no source.
+- Everything is true on any day: no "today", "tomorrow" or "this year" outside a dated `current` fact; recurring practices carry when they happen; no number you worked out yourself.
 - Versions stay separate, and the outline does not merge them.
 - Every referenced id exists, the JSON parses, and nothing follows the JSON block.
 - If you can run Python: `python3 <skill-dir>/scripts/check_brief.py <file>` prints `ok`. It also reads a whole reply saved as `.md` and checks its last `json` block. `--fetch` also checks that each quote appears on its page.

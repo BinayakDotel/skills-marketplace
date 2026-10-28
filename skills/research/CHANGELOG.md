@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 (2026-10-28)
+
+Briefs now hold up on any day, so a video made from them doesn't go stale the day after it is posted ("the queue started this morning", "the door closes tomorrow").
+
+- *Any day, any year*: `angle`, `hooks`, `outline` and `claim_local` never say "today", "tomorrow" or "this year" for the research day.
+- Recurring festivals and rituals are `practice` facts worded as recurring, with their calendar anchor from a source ("Every year on Navami of Dashain, …"): the festival day or tithi, not this year's calendar date, which is a separate dated `current` fact. Nothing is worded as recurring unless a source says so.
+- A new story question finds the calendar anchor; "bring it home" is what people do every time it comes round.
+- Changing numbers are `figure`s with their year; never a number worked out from others (days between dates, totals, ages). Hooks rest on facts in the brief.
+- The `research-brief/1` format is unchanged: existing apps keep importing.
+
 ## 1.1.0 (2026-10-20)
 
 Briefs now carry a story, not only sourced facts, so scripts written from them stop sounding like reports ("according to UNESCO, the newspaper wrote …").
