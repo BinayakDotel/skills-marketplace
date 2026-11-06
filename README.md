@@ -22,6 +22,8 @@ My agent skills. Each skill is a folder with a `SKILL.md` in the open [Agent Ski
 | [take](skills/take/) | start of a ticket | Picks the next ticket, asks up to 8 questions, writes the decisions into the issue. No code. |
 | [implement](skills/implement/) | build the ticket | Tests first, then code, `just check`, self-review, opens the PR. |
 | [address](skills/address/) | after your PR comments | Fixes each comment on the same branch. |
+| [preview-pr](skills/preview-pr/) | optional, before merging a PR | Runs the open PR's worktree locally, opens the relevant route and gives a short review checklist. |
+| [stop-preview](skills/stop-preview/) | after a PR preview | Stops that preview without restarting the previous app. |
 | [done](skills/done/) | after merge | Marks merged tickets done and names the next one. |
 | [ui-from-reference](skills/ui-from-reference/) | automatic, for screen tickets | Builds screens by copying the reference design, then compares screenshots. |
 
@@ -35,6 +37,7 @@ My agent skills. Each skill is a folder with a `SKILL.md` in the open [Agent Ski
 ```
 /take (Grok)  →  /implement (Composer)  →  you review and merge  →  /done (Auto)
                                          ↘ /address (Auto) if you left comments
+                                         ↘ /preview-pr → /stop-preview (optional, before merge)
 ```
 
 The dev-flow skills use Matt Pocock's `grilling`, `tdd`, `code-review`, `pr` and `handoff` from [mattpocock/skills](https://github.com/mattpocock/skills). Install those separately; don't edit them.
